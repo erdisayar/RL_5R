@@ -25,8 +25,8 @@ After running all the commands above, the gazebo and rviz windows pop out and yo
 To able to run the actor-critic algorihm,please run the [a2c_agent](fiver\fiver_control\src\a2c_agent.py) after you run the all above command.
 
 
+[![Audi R8](https://i9.ytimg.com/vi/IUO6pvEAiAo/mq3.jpg?sqp=CI6I3fQF&rs=AOn4CLDAadqWG-CbmyBx2y9ozgItXotCqw)](http://www.youtube.com/watch?v=IUO6pvEAiAo "5R Actor Critic")
 
-[![](http://img.youtube.com/vi/IUO6pvEAiAo/0.jpg)](http://www.youtube.com/watch?v=IUO6pvEAiAo "5R Actor Critic")
 
 
 First of all, I constructed a 5R mechanism as an example in the ROS environment shown in Fig. 2
