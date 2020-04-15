@@ -25,11 +25,14 @@ After running all the commands above, the gazebo and rviz windows pop out and yo
 To able to run the actor-critic algorihm,please run the [a2c_agent](fiver\fiver_control\src\a2c_agent.py) after you run the all above command.
 
 
+To open the video , please click on the below picture.
 [![5R Actor Critic](https://i9.ytimg.com/vi/IUO6pvEAiAo/mq3.jpg?sqp=CI6I3fQF&rs=AOn4CLDAadqWG-CbmyBx2y9ozgItXotCqw)](https://youtu.be/IUO6pvEAiAo)
 
 
-First of all, I constructed a 5R mechanism as an example in the ROS environment shown in Fig. 2
-
+<img src="media/actor_critic_animation.gif" height="200" width="400">
 
 I am using continuous action and observation space. Moreover, I built the Deep Policy Gradient with Actor-Critic Methods. I am expecting that agent will learn a specific trajectory in the Gazebo environment without using any forward/inverse kinematic. This project can be extended into any mechanism especially for the mechanisms which do not have any inverse kinematics or have stochastic behavior. If the agent learns in the Gazebo environment, learned parameters can be transferred for the real-life implementations.
 For almost 2 days algorithm running and until now I got the following results.
+<img src="media/actor_critic.png" height="85" width="450">
+
+
