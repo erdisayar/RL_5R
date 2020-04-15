@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- Revolute-Revolute Manipulator -->
+<robot name="fiver" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Constants for robot dimensions -->
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="mass" value="0.1" /> <!-- arbitrary value for mass -->
+
+  <xacro:property name="height1" value="2" /> <!-- Link 1 -->
+  <xacro:property name="height2" value="1" /> <!-- Link 2 -->
+  <xacro:property name="height3" value="1" /> <!-- Link 2 -->
+  <xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+  <xacro:property name="axel_offset" value="0.05" /> <!-- Space btw top of beam and the each joint -->
+  <xacro:property name="width" value="0.01"/> <!-- Square dimensions (widthxwidth) of beams -->
+  <xacro:property name="link1" value="0.250"/> <!-- Link 1 -->
+  <xacro:property name="link2" value="0.250"/> <!-- Link 2 -->
+  <xacro:property name="link3" value="0.250"/> <!-- Link 3 -->
+  <xacro:property name="link4" value="0.250"/> <!-- Link 4 -->
+  <xacro:property name="link5" value="0.200"/> <!-- Link 5 -->
+
+
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find fiver_description)/urdf/fiver.gazebo" />
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find fiver_description)/urdf/materials.xacro" />
+
+  <!-- Used for fixing robot to Gazebo 'base_link' -->
+  <link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="link1"/>
+  </joint>
+
+  <!-- Base Link -->
+  <link name="link1">
+    <collision>
+      <origin xyz="0 0 ${width/2}" rpy="0 ${PI/2} 0"/>
+      <geometry>
+      <cylinder radius="${width}" length="${link1}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 ${width/2}" rpy="0 ${PI/2} 0"/>
+      <geometry>
+      <cylinder radius="${width}" length="${link1}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 ${width/2}" rpy="0 ${PI/2} 0"/>
+      <mass value="10"/>
+      <inertia
+	  ixx="1.15" ixy="0.0" ixz="0.0"
+	  iyy="1.15" iyz="0.0"
+	  izz="1.15"/>
+    </inertial>
+  </link>
+
+  <joint name="joint1" type="continuous">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="${-link1/2} ${-width/2} 0" rpy="0 0 ${PI/6}"/>
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.7"/>
+  </joint>
+
+  <!-- Middle Link -->
+  <link name="link2">
+    <collision>
+      <origin xyz="0 ${link2/2}  ${width/2}" rpy="${PI/2} 0 0"/>
+      <geometry>
+      <cylinder radius="${width}" length="${link2}"/>
+      </geometry>
+      </collision>
+
+    <visual>
+       <origin xyz="0 ${link2/2}  ${width/2}" rpy="${PI/2} 0 0"/>
+      <geometry>
+      <cylinder radius="${width}" length="${link2}"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <inertial>
+       <origin xyz="0 ${link2/2}  ${width/2}" rpy="${PI/2} 0 0"/>
+      <mass value="${mass}"/>
+      <inertia
+	  ixx="0.15" ixy="0.0" ixz="0.0"
+	  iyy="0.15" iyz="0.0"
+	  izz="0.15"/>
+    </inertial>
+  </link>
+
+
+
+
+
+
+</robot>

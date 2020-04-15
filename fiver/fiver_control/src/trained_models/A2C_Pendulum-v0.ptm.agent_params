@@ -1,0 +1,16 @@
+{
+    "clip_rewards": true,
+    "gamma": 0.99,
+    "learning_rate": 0.0001,
+    "learning_step_thresh": 10,
+    "load_trained_model": false,
+    "max_num_episodes": 50000,
+    "model_dir": "trained_models/",
+    "num_agents": 1,
+    "save_freq_when_perf_improves": 10,
+    "seed": 1,
+    "summary_file_path_prefix": "./logs/A2C_",
+    "test": false,
+    "use_cuda": false,
+    "use_entropy_bonus": true
+}

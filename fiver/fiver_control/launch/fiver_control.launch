@@ -1,0 +1,21 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find fiver_control)/config/fiver_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/fiver" args="joint_state_controller
+					  joint1_position_controller
+					  joint5_position_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/fiver/joint_states" />
+  </node>
+
+  <arg name="rvizconfig" default="$(find fiver_gazebo)/rviz/rivz_conf.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  
+</launch>
